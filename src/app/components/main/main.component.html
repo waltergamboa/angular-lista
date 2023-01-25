@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row text-center p-3">
+        <div class="col text-bg-success border rounded-3">
+            <h1>Lista de Alumnos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-success">
+                <thead>
+                    <tr>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Inscripto</th>
+                        <th>Inscribirse</th>
+                        <th>Cursando</th>
+                        <th>Cursos</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let alumno of listaAlumnos">
+                    <tr>
+                        <td>{{alumno.apellido | titlecase}}</td>
+                        <td>{{alumno.nombre | titlecase}}</td>
+                        <td>{{alumno.edad}}</td>
+                        <td [ngClass]="alumno.estaInscripto ? 'texto-azul' : 'texto-rojo'">{{alumno.estaInscripto ? 'si'
+                            : 'no'}}</td>
+                        <td> <span *ngIf="!alumno.estaInscripto"><button
+                                    class="btn btn-primary">Inscribirse</button></span></td>
+                        <td [ngClass]="alumno.estaCursando ? 'texto-azul' : 'texto-rojo'">{{alumno.estaCursando ? 'si' :
+                            'no'}}
+                        </td>
+                        <td>
+                            <span *ngIf="!alumno.estaCursando"><button class="btn btn-primary">Agregar
+                                    Cursos</button></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
